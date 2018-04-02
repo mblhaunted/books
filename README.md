@@ -46,6 +46,16 @@ Similar to running tests, we leverage `docker-compose` with the following comman
 
 `docker compose up api`
 
+## Running the API in Production
+
+From the apistar docs, we can leverage gunicorn to run the API with a more robust server.
+
+```
+$ pip install gunicorn
+$ pip install meinheld
+$ gunicorn app:app --workers=4 --bind=0.0.0.0:5000 --pid=pid --worker-class=meinheld.gmeinheld.MeinheldWorker
+```
+
 ### Accessing the API
 
 `apistar` provides a nice interface for viewing our API schema. Once your api comes up, simply navigate to `http://localhost:8080/docs` to view all available API functionality, experiment with the API calls themselves, etc.
