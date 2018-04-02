@@ -1,0 +1,22 @@
+version: '2'
+
+services:
+  base:
+    build: .
+    entrypoint: apistar
+    command: ["create_tables"]
+    working_dir: /app/api
+    volumes:
+      - ".:/app"
+
+  api:
+    extends: base
+    command: ["run", "--host", "0.0.0.0", "--port", "8080"]
+    ports:
+      - "8080:8080"
+    links: [base]
+
+  test:
+    extends: base
+    command: ["test"]
+    links: [base]
