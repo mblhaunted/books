@@ -8,8 +8,15 @@ from project.types import Book as BookType
 
 def list_books(session: Session) -> Response:
     queryset = session.query(BookModel).all()
-    return [
-        {'id': book.id, 'title': book.title, 'checked_out': book.checked_out}
+    return [{
+        'id': book.id,
+        'title': book.title,
+        'author': book.author,
+        'publisher': book.publisher,
+        'publish_date': str(book.publish_date),
+        'rating': book.rating,
+        'checked_out': bool(book.checked_out)
+    }
         for book in queryset
     ]
 
