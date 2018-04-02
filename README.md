@@ -74,9 +74,7 @@ NOTE: This will create a sqlite database called `db.sqlite3`in your `[project_ro
 
 # Design notes
 
-While you can use `docker` to manually navigate the images and codebase, `docker-compose.yml` is provided to orchestrate running the app, tests, and for using `kompose` against to deploy the codebase to Kubernetes.
-
-(Note, I've not yet tested converting this to k8s with `kompose`.)
+While you can use `docker` to manually navigate the images and codebase, `docker-compose.yml` is provided to orchestrate running the app, tests. For deploying on kubernetes, use the provided helm chart.
 
 The `docker-compose.yml` is designed to map the ports you'll need to access the API, and map the `[project_directory]/*` to `/app` in the container. This means the `db.sqlite3` database will be created in that directory.
 
