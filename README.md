@@ -40,13 +40,21 @@ To begin, open `api/tests.py` and create new tests prior to adding additional fu
 
 Once you've added your desired tests and features, simply run another `docker-compose run test` to see your results.
 
-## Running the API
+## Running the API (local)
 
 Similar to running tests, we leverage `docker-compose` with the following command.
 
 `docker compose up api`
 
-## Running the API in Production
+## Running the API (kubernets)
+
+A helm chart has been provided. The chart has been tested with `minikube`. The steps to deploy onto kubernetes follow.
+
+1. Ensure your kubernetes system can access the image repository you're working with.
+2. Build the images with `docker-compose`, or `docker build`. 
+3. Install the helm chart from the root repo directory. `helm install --debug helm/books/`
+
+## Running the API on "production" web server
 
 From the apistar docs, we can leverage gunicorn to run the API with a more robust server.
 
