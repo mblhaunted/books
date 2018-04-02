@@ -58,7 +58,9 @@ $ gunicorn app:app --workers=4 --bind=0.0.0.0:5000 --pid=pid --worker-class=mein
 
 ### Accessing the API
 
-`apistar` provides a nice interface for viewing our API schema. Once your api comes up, simply navigate to `http://localhost:8080/docs` to view all available API functionality, experiment with the API calls themselves, etc.
+`apistar` provides a nice interface for viewing our API schema. Once your api comes up, simply navigate to `http://localhost:8080/docs/` to view all available API functionality, experiment with the API calls themselves, etc.
+
+If you're already running the API, access the doc schema [here](http://localhost:8080/docs/).
 
 NOTE: This will create a sqlite database called `db.sqlite3`in your `[project_root]/api/` directory.
 
