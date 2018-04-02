@@ -46,7 +46,7 @@ Similar to running tests, we leverage `docker-compose` with the following comman
 
 `docker compose up api`
 
-## Running the API (kubernets)
+## Running the API (k8s)
 
 A helm chart has been provided. The chart has been tested with `minikube`. The steps to deploy onto kubernetes follow.
 
@@ -54,9 +54,11 @@ A helm chart has been provided. The chart has been tested with `minikube`. The s
 2. Build the images with `docker-compose`, or `docker build`. 
 3. Install the helm chart from the root repo directory. `helm install --debug helm/books/`
 
-## Running the API on "production" web server
+Note, this hasn't been extensively tested.
 
-From the apistar docs, we can leverage gunicorn to run the API with a more robust server.
+## Running the API on a "production" web server
+
+We can leverage gunicorn to run the API with a more robust server.
 
 ```
 $ pip install gunicorn
@@ -118,6 +120,8 @@ settings = {
     }
 }
 ```
+
+For kubernetes, we could deploy a `postgres` image, and simply configure the API to access that container as it's database.
 
 - Rebuild your images: `docker-compose build --no-cache`
 - Test: `docker-compose run test`
